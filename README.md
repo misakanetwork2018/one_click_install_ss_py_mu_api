@@ -1,6 +1,6 @@
 # one_click_install_ss_py_mu_api
 
-该脚本会把ss mu安装到/ss中，请在root权限下安装，否则会安装失败
+该脚本会把ss mu安装到/root中，请在root权限下安装，否则会安装失败
 
 该版本ss要求使用Python2.7及更高版本，不完全支持Python2.6
 
