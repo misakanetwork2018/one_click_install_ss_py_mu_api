@@ -63,7 +63,6 @@ function instdpec()
 {
 	if [ "$1" == "CentOS" ] || [ "$1" == "CentOS7" ];then
 		$PM -y install wget
-		$PM -y install 
 		TEST=`git --version`
 		if  [ ! -n "$TEST" ] ;then
 		$PM -y install git
