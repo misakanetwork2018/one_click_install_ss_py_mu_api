@@ -172,7 +172,7 @@ fi
 sed -i "s/API_ENABLED = False/API_ENABLED = True/" /root/shadowsocks/shadowsocks/config.py
 
 if [[ -n "$url" ]]; then
-sed -i "s/API_URL = 'http://domain/mu'/API_URL = '$url'/" /root/shadowsocks/shadowsocks/config.py
+sed -i "s#API_URL = 'http://domain/mu'#API_URL = '$url'#" /root/shadowsocks/shadowsocks/config.py
 fi
 if [[ -n "$pass" ]]; then
 sed -i "s/API_PASS = 'mupass'/API_PASS = '$pass'/" /root/shadowsocks/shadowsocks/config.py
