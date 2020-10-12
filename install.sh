@@ -106,13 +106,13 @@ rm -rf libsodium-1.0.17.tar.gz
 rm -rf libsodium-1.0.17
 fi
 
-git clone -b manyuser https://github.com/misakanetwork2018/shadowsocks-py-mu.git shadowsocks
+git clone -b manyuser https://github.com/misakanetwork2018/shadowsocks-py-mu.git /shadowsocks
 if [ ! -d "./shadowsocks" ]; then
 echo "Download fail. Please try again."
 exit 1;
 fi
 
-cp /root/shadowsocks/shadowsocks/config_example.py /root/shadowsocks/shadowsocks/config.py
+cp /shadowsocks/shadowsocks/config_example.py /shadowsocks/shadowsocks/config.py
 
 if $supervisor; then
 echo "Installing supervisor..."
@@ -158,7 +158,7 @@ cat > /etc/supervisor/ss.conf <<EOF
 command=python servers.py
 ;numprocs=1 ; 默认为1 
 ;process_name=%(program_name)s ; 默认为 %(program_name)s，即 [program:x] 中的 x 
-directory=/root/shadowsocks/shadowsocks ; 执行 command 之前，先切换到工作目录
+directory=/shadowsocks/shadowsocks ; 执行 command 之前，先切换到工作目录
 user=root ; 使用 root 用户来启动该进程
 ; 程序崩溃时自动重启，重启次数是有限制的，默认为3次 autorestart=true 
 redirect_stderr=true
@@ -168,16 +168,16 @@ loglevel=info
 EOF
 fi
 
-sed -i "s/API_ENABLED = False/API_ENABLED = True/" /root/shadowsocks/shadowsocks/config.py
+sed -i "s/API_ENABLED = False/API_ENABLED = True/" /shadowsocks/shadowsocks/config.py
 
 if [[ -n "$url" ]]; then
-sed -i "s#API_URL = 'http://domain/mu'#API_URL = '$url'#" /root/shadowsocks/shadowsocks/config.py
+sed -i "s#API_URL = 'http://domain/mu'#API_URL = '$url'#" /shadowsocks/shadowsocks/config.py
 fi
 if [[ -n "$pass" ]]; then
-sed -i "s/API_PASS = 'mupass'/API_PASS = '$pass'/" /root/shadowsocks/shadowsocks/config.py
+sed -i "s/API_PASS = 'mupass'/API_PASS = '$pass'/" /shadowsocks/shadowsocks/config.py
 fi
 if [[ -n "$node" ]]; then
-sed -i "s/API_NODE_ID = '1'/API_NODE_ID = '$node'/" /root/shadowsocks/shadowsocks/config.py
+sed -i "s/API_NODE_ID = '1'/API_NODE_ID = '$node'/" /shadowsocks/shadowsocks/config.py
 fi
 
 if $run; then
