@@ -107,7 +107,7 @@ rm -rf libsodium-1.0.17
 fi
 
 git clone -b manyuser https://github.com/misakanetwork2018/shadowsocks-py-mu.git /shadowsocks
-if [ ! -d "./shadowsocks" ]; then
+if [ ! -d "/shadowsocks" ]; then
 echo "Download fail. Please try again."
 exit 1;
 fi
